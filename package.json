@@ -11,5 +11,8 @@
     "bot"
   ],
   "author": "Peter",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
 }
