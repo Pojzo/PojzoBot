@@ -13,6 +13,7 @@
   "author": "Peter",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.3.3",
     "discord.js": "^12.5.1"
   }
 }

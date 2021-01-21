@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const keys = require('./keys.json');
+const keys = require('./keys.config');
 
 const client = new Discord.Client();
 
