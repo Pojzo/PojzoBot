@@ -28,17 +28,17 @@ function handleMessage(msg, client) {
     var message = stripMessage(msg.content);
     
     var funcName = commands.getCorrespondingFunction(message); // get corresponding function given the message as input
-    if (funcName == null) return funcName; // if no match was found, return null
+    if (funcName == null) return "I can't answer this question yet"; // if no match was found, return null
+    console.log(funcName);
     try { // try to import function using its name
-        var func = require(`./${funcName}`); 
-        func.test();
+        var func = require("./" + funcName); 
     }
     catch { // file with given function is missing
         console.log("Couldnt find file with corresponding function");
         return null;
     }
+    func.primary(message, msg);
     return null;
-    
 
 }
 

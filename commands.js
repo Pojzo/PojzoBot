@@ -3,8 +3,6 @@ commands = { // will move this into a new file in the future.
     "what does": "urban.js"
 }
 
-
-
 function printAllCommands() { // print all commands and their corresponding functions
     for (var key in commands) { // iterate over all commands
         console.log(`${key} : ${commands[key]}`);
