@@ -162,3 +162,4 @@ bot_logo.jpeg
 .gitignore
 .gitignore
 package-lock.json
+package.json
