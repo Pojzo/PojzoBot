@@ -1,0 +1,2 @@
+# PojzoBot
+Discord bot 
