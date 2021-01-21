@@ -31,6 +31,9 @@ function handleMessage(msg, client) {
     if (content.toLowerCase() == "hello") {
         return "Hello";
     }
+    else {
+        return "Cant respond to your message yet";
+    }
     return null;
 }
 

@@ -3,7 +3,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,node
 
-### Node ###
+### Node ### #
 # Logs
 logs
 *.log
@@ -159,3 +159,6 @@ keys.json
 keys.json
 allowed_channels.json
 bot_logo.jpeg
+.gitignore
+.gitignore
+package-lock.json
