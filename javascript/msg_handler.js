@@ -1,6 +1,7 @@
 
 var allowed_channels = require('../jsons/allowed_channels.json');
 var commands = require('./commands.js');
+var index = require('./index.js')
 
 function filterChannel(msg) {
     if (allowed_channels.channels.includes(msg.channel.name)) return true; // if message is from allowed channel return true
@@ -26,19 +27,15 @@ function handleMessage(msg, client) {
     if (!validMessage(msg, client)) return null; // only continue if message is valid
 
     var message = stripMessage(msg.content);
-    
-    var funcName = commands.getCorrespondingFunction(message); // get corresponding function given the message as input
-    if (funcName == null) return "I can't answer this question yet"; // if no match was found, return null
-    try { // try to import function using its name
-        var func = require("./functions/" + funcName); 
-    }
-    catch { // file with given function is missing
-        console.log("Couldnt find file with corresponding function");
-        return null;
-    }
-    func.primary(message, msg);
-    return null;
+    console.log("got here");
+    const spawn = require('child_process').spawn;
 
+    const process = spawn('python', ['../python/predict_response.py', message])
+    var reply = null;
+    process.stdout.on('data', data => {
+        index.sendMessage(msg, data.toString());
+    })
+    return null;
 }
 
 exports.handleMessage = handleMessage;
