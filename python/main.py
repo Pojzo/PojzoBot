@@ -9,10 +9,11 @@ from tensorflow.keras.layers import Dense, Embedding, GlobalAveragePooling1D
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.preprocessing import LabelEncoder
+from tensorflow.keras.models import model_from_json
 import pickle
 
 
-#assert(len(tf.config.list_physical_devices('GPU')))
+# assert(len(tf.config.list_physical_devices('GPU')))
 
 with open('intents.json') as file:
     data = json.load(file)
@@ -50,6 +51,7 @@ word_index = tokenizer.word_index
 sequences = tokenizer.texts_to_sequences(training_sentences)
 padded_sequences = pad_sequences(sequences, truncating='post', maxlen=max_len)
 
+
 def create_model():
     model = Sequential([
         Embedding(vocab_size, embedding_dim, input_length=max_len),
@@ -59,23 +61,38 @@ def create_model():
         Dense(num_classes, activation='softmax')
     ])
     model.compile(loss='sparse_categorical_crossentropy',
-                 optimizer=('adam'),
-                 metrics=['accuracy']
-    )
+                  optimizer=('adam'),
+                  metrics=['accuracy']
+                  )
     return model
 
 
+def train_model(new=True, epochs=500): # THIS IS VERY SHITTY CODE, WILL REWRITE LATER
+    if not new:
+        with open("json_model.json", 'r') as json_file:
+            loaded_json = json_file.read()
+        model = model_from_json(loaded_json)
+        model.load_weights("weights_model.h5")
+        model.compile(loss='sparse_categorical_crossentropy',
+                      optimizer=('adam'),
+                      metrics=['accuracy']
+                      )
+        print("Loaded model")
+    else:
+        model = create_model()
 
-def train_model(model, epochs = 500):
-    epochs = 500
-    history = model.fit(padded_sequences, np.array(training_labels), epochs=epochs)
-    model.save("model")
+    history = model.fit(padded_sequences, np.array(
+        training_labels), epochs=epochs)
+    model_json = model.to_json()
+    with open("json_model.json", 'w') as json_file:
+        json_file.write(model_json)
 
+    model.save_weights("weights_model.h5")
 
 
 with open('tokenizer.pickle', 'wb') as handle:
     pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    
+
 # to save the fitted label encoder
 with open('label_encoder.pickle', 'wb') as ecn_file:
     pickle.dump(label_encoder, ecn_file, protocol=pickle.HIGHEST_PROTOCOL)
