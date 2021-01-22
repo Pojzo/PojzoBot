@@ -12,6 +12,11 @@
      "patterns": ["Thanks", "Thank you", "That's helpful", "Thanks for the help"],
      "responses": ["Happy to help!", "Any time!", "My pleasure", "You're most welcome!"]
     },
+    {
+    "tag" : "mood",
+    "patterns" : ["How are you?", "How you doin?", "How you doing?", "How are you doing?", "Whats your current mood"],
+    "responses" : ["I'm doing great", "I'm good, thanks for asking", "I've been doing great since my creation", "I'm fine"]
+    },
     {"tag": "about",
      "patterns": ["Who are you?", "What are you?", "Who you are?" ],
      "responses": ["I'm PojzoBot, your chatbot", "I'm PojzoBot, an Artificial Intelligent bot"]
