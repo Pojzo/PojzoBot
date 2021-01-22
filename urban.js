@@ -41,6 +41,9 @@ const callback = async(data, msg) => {
     if (response != undefined) {
         response = response.list[0].definition; // get the first definition 
         response = removeSquareBrackets(response); // remove square brackets from the string
+        if (response.length >= 2000) { // discord doesnt allow anything longer than 2000 characters
+            response = response.substr(0, 1500);
+        }
         index.sendMessage(msg, response); // send response
     }
     return null;
