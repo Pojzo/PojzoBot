@@ -12,7 +12,7 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 
 
-assert(len(tf.config.list_physical_devices('GPU')))
+#assert(len(tf.config.list_physical_devices('GPU')))
 
 with open('intents.json') as file:
     data = json.load(file)
@@ -65,20 +65,13 @@ def create_model():
     return model
 
 
-checkpoint_path = "training_checkpoints/cp.ckpt"
 
-cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
-                                                save_weights_only=True,
-                                                verbose=0
-)
-
-def train_model():
+def train_model(model, epochs = 500):
     epochs = 500
-    history = model.fit(padded_sequences, np.array(training_labels), epochs=epochs, callbacks=[cp_callback])
+    history = model.fit(padded_sequences, np.array(training_labels), epochs=epochs)
+    model.save("model")
 
 
-model = create_model()
-train_model()
 
 with open('tokenizer.pickle', 'wb') as handle:
     pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
