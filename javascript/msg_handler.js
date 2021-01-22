@@ -31,7 +31,7 @@ function handleMessage(msg, client) {
     if (funcName == null) return "I can't answer this question yet"; // if no match was found, return null
     console.log(funcName);
     try { // try to import function using its name
-        var func = require("./" + funcName); 
+        var func = require("./functions/" + funcName); 
     }
     catch { // file with given function is missing
         console.log("Couldnt find file with corresponding function");
