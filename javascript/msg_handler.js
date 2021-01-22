@@ -1,5 +1,5 @@
 
-var allowed_channels = require('./allowed_channels.json');
+var allowed_channels = require('../jsons/allowed_channels.json');
 var commands = require('./commands.js');
 
 function filterChannel(msg) {
@@ -29,7 +29,6 @@ function handleMessage(msg, client) {
     
     var funcName = commands.getCorrespondingFunction(message); // get corresponding function given the message as input
     if (funcName == null) return "I can't answer this question yet"; // if no match was found, return null
-    console.log(funcName);
     try { // try to import function using its name
         var func = require("./functions/" + funcName); 
     }

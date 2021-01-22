@@ -1,5 +1,5 @@
 const Discord = require('discord.js'); // discord offical API
-const Keys = require('./keys.json'); 
+const Keys = require('../jsons/keys.json'); 
 const MessageHandler = require('./msg_handler')
 
 const client = new Discord.Client();

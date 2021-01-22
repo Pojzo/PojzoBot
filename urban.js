@@ -1,4 +1,4 @@
-const index = require('./index.js');
+const index = require('../index.js');
 const unirest = require('unirest');
 
 function test() {
