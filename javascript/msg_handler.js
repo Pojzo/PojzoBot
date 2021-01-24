@@ -2,6 +2,7 @@
 var allowed_channels = require('../jsons/allowed_channels.json');
 var commands = require('./commands.js');
 var index = require('./index.js')
+var define = require('./functions/define.js');
 
 function filterChannel(msg) {
     if (allowed_channels.channels.includes(msg.channel.name)) return true; // if message is from allowed channel return true
@@ -23,19 +24,29 @@ function stripMessage(message) { // rid content of a message of % at the beginni
     }
     return temp.slice(1).join(" "); // otherwise join string without the first one (%)
 }
+
+function handleFunctionReturns(msg, text) {
+    index.sendMessage(msg, text);
+}
+
 function handleMessage(msg, client) {
     if (!validMessage(msg, client)) return null; // only continue if message is valid
 
     var message = stripMessage(msg.content);
+    define.primary(msg, message);
+    /*
     console.log("got here");
     const spawn = require('child_process').spawn;
 
     const process = spawn('python', ['../python/predict_response.py', message])
-    var reply = null;
+
     process.stdout.on('data', data => {
         index.sendMessage(msg, data.toString());
     })
     return null;
+    */
+   return null;
 }
 
-exports.handleMessage = handleMessage;
+module.exports.handleMessage = handleMessage;
+module.exports.handleFunctionReturns = handleFunctionReturns

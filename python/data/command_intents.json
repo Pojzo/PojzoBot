@@ -1,0 +1,22 @@
+{
+    "intents" : [
+        {
+            "type" : "command",
+            "tag" : "music",
+            "patterns" : ["Play something by someone", "Play music by someone"],
+            "responses" : ["Ive recognized you want me to play some music"]
+        },
+        {
+            "type" : "command",
+            "tag" : "define",
+            "patterns" : ["Define something?", "What does something mean?", "What is something?", "Define the word something"],
+            "responses" : ["Ive recognized you want me to define something"]
+        },
+        {
+            "type" : "command",
+            "tag" : "urban define",
+            "patterns" : ["Define something on urban dictionary", "Define something on urban dict"],
+            "responses" : ["Ive recognized you want me to play define something on urban dictionary"]
+        }
+    ]
+}

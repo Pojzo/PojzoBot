@@ -1,50 +1,58 @@
  
 {"intents": [
-    {"tag": "greeting",
+    {
+     "type" : "chat",
+     "tag": "greeting",
      "patterns": ["Hi", "Hey", "Is anyone there?", "Hello", "Hay"],
      "responses": ["Hello", "Hi", "Hi there"]
     },
-    {"tag": "goodbye",
+    {
+    "type" : "chat",
+    "tag": "goodbye",
      "patterns": ["Bye", "See you later", "Goodbye"],
      "responses": ["See you later", "Have a nice day", "Bye! Come back again"]
     },
-    {"tag": "thanks",
+    {
+    "type" : "chat",
+    "tag": "thanks",
      "patterns": ["Thanks", "Thank you", "That's helpful", "Thanks for the help"],
      "responses": ["Happy to help!", "Any time!", "My pleasure", "You're most welcome!"]
     },
     {
+    "type" : "chat",
     "tag" : "mood",
     "patterns" : ["How are you?", "How you doin?", "How you doing?", "How are you doing?", "Whats your current mood"],
     "responses" : ["I'm doing great", "I'm good, thanks for asking", "I've been doing great since my creation", "I'm fine"]
     },
-    {"tag": "about",
+    {
+    "type" : "chat",
+    "tag": "about",
      "patterns": ["Who are you?", "What are you?", "Who you are?" ],
      "responses": ["I'm PojzoBot, your chatbot", "I'm PojzoBot, an Artificial Intelligent bot"]
     },
-    {"tag": "name",
+    {
+    "type" : "chat",    
+    "tag": "name",
     "patterns": ["what is your name", "what should I call you", "whats your name?"],
     "responses": ["You can call me Pojzo.", "I'm Pojzo!", "Just call me as Pojzo"]
     },
-    {"tag": "help",
-    "patterns": ["Could you help me?", "give me a hand please", "Can you help?", "What can you do for me?", "I need a support", "I need a help", "support me please"],
-    "responses": ["I need more development to be able to assist you", "I can't help you yet", "I will be more helpful in the future"]
-    },
     {
+    "type" : "chat",
     "tag" : "age",
     "patterns" : ["How old are you?", "What is your age?"],
     "responses" : ["I am a couple of days old", "I'm as young as a newborn", "Hard to tell"]
     },
     {
+    "type" : "chat",
     "tag" : "creator",
     "patterns" : ["Who is your creator?", "Who created you?", "Who developed you", "Who programmed you", "Who were you programmed by"],
     "responses" : ["I was created by a guy nicknamed Pojzo", "My creator is Pojzo", "I was developed by Pojzo", "I was programmed by Pojzo"]
     },
     {
+    "type" : "chat",
     "tag" : "development",
     "patterns" : ["What programming language are you programmed in", "How were you created", "What are you made in", "What are you programmed in"],
     "responses" : ["Mostly javascript, using the official Discord API", "Node.js", "Node.js with python used for machine learning", "Javascript with bits of python"]
     }
-    
-    
 ]
 }
